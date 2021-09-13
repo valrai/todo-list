@@ -8,6 +8,8 @@ RUN yarn install && yarn build
 
 EXPOSE 3000
 
-RUN chmod +x .docker/entrypoint.sh
+COPY ./.docker/entrypoint.sh ./entrypoint.sh
 
-ENTRYPOINT [ ".docker/entrypoint" ]
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
