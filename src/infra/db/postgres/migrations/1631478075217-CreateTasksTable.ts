@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm'
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm'
 
 export class CreateTasksTable1631478075217 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -16,23 +16,40 @@ export class CreateTasksTable1631478075217 implements MigrationInterface {
           {
             name: 'description',
             type: 'varchar(400)',
+            comment: 'Description of the task to be done',
           },
           {
             name: 'it_is_done',
             type: 'boolean',
             default: false,
+            comment: 'Flag to indicate if the task is done',
+          },
+          {
+            name: 'user_id',
+            type: 'uuid',
+            isNullable: false,
+            comment: 'Task owner id',
           },
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)',
+            default: 'now()',
           },
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)',
+            default: 'now()',
           },
         ],
+      }),
+    )
+
+    await queryRunner.createForeignKey(
+      'tasks',
+      new TableForeignKey({
+        columnNames: ['user_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'users',
       }),
     )
   }

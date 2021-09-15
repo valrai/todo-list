@@ -23,7 +23,6 @@ export default {
       password: process.env.POSTGRES_PASSWORD,
       port: Number(process.env.POSTGRES_PORT),
       database: process.env.POSTGRES_DATABASE,
-      test_database: process.env.TEST_POSTGRES_DATABASE,
     },
   },
 }

@@ -1,9 +1,9 @@
 import 'module-alias/register'
 import app from '@main/config/app'
-import PostgresDatabase from '@src/infra/db/postgres/connection'
+import PostgresDatabase from '@infra/db/postgres/connection'
 import env from '@main/config/env'
 
-const boostrap = async (): Promise<void> => {
+const bootstrap = async (): Promise<void> => {
   const database = new PostgresDatabase()
 
   database
@@ -16,4 +16,4 @@ const boostrap = async (): Promise<void> => {
     })
 }
 
-boostrap()
+bootstrap()

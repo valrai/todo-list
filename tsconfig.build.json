@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es6"
+    ],
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "rootDir": "src",
+    "baseUrl": "./",
+    "paths": {
+      "@tests/*": ["tests/*"],
+      "@src/*": ["src/*"],
+      "@main/*": ["src/main/*"],
+      "@domain/*": ["src/domain/*"],
+      "@infra/*": ["src/infra/*"],
+      "@presentation/*": ["src/presentation/*"],
+      "@application/*": ["src/application/*"],
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "build",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "build", ".docker", ".husky", "build", "test", "coverage"]
+}
