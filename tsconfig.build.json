@@ -22,6 +22,7 @@
     "outDir": "build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "strict": true,
     "noImplicitAny": false,
     "skipLibCheck": true
