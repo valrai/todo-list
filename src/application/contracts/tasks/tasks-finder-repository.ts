@@ -1,4 +1,4 @@
-import { TaskDto } from '@src/application/dtos/task'
+import { TaskDto } from '@application/dtos'
 
 export default interface TasksFinderRepository {
   findOne: (id: string) => Promise<TaskDto | undefined>

@@ -7,12 +7,12 @@ export const adaptRoute = (controller: Controller) => {
     const httpResponse = await controller.handle(req)
 
     if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299) {
-      res.status(httpResponse.statusCode).send(httpResponse.data)
+      res.status(httpResponse.statusCode).json({ data: httpResponse.data })
     } else {
       const isProduction = env.enviroment === 'prod'
       const error = isProduction ? httpResponse.data.message : httpResponse.data
 
-      res.status(httpResponse.statusCode).send({ error })
+      res.status(httpResponse.statusCode).json({ error })
     }
   }
 }

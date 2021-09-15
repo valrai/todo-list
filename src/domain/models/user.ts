@@ -1,11 +1,11 @@
-import Role from '@src/domain/models/role'
+import { Task } from '.'
 
 type User = {
   id: string
   email: string
   username: string
   password: string
-  roles: Role[]
+  tasks?: Task[]
   createdAt: Date
   updatedAt: Date
 }

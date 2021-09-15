@@ -7,6 +7,7 @@ export class TaskViewModel {
     this.itIsDone = params.itIsDone
     this.createdAt = params.createdAt
     this.updatedAt = params.updatedAt
+    this.userId = params.userId
   }
 
   id: string
@@ -14,6 +15,8 @@ export class TaskViewModel {
   description: string
 
   itIsDone: boolean
+
+  userId: string
 
   createdAt: string
 

@@ -1,3 +1,5 @@
-import { Task } from '@src/domain/models'
+import { Task } from '@domain/models'
 
-export type TaskDto = Task
+type TaskDto = Task
+
+export default TaskDto

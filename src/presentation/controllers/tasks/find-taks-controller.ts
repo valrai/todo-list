@@ -7,10 +7,10 @@ import { ok, serverError } from '@presentation/helpers/http'
 class FindTasksController implements Controller {
   constructor(private readonly tasksFinder: TasksFinder) {}
 
-  async handle(params: HttpRequest): Promise<HttpResponse<TaskViewModel[]>> {
+  async handle(request: HttpRequest): Promise<HttpResponse<TaskViewModel[]>> {
     try {
-      const { id } = params.body
-      const tasks = await this.tasksFinder.findMany(id)
+      const { user_id } = request.query
+      const tasks = await this.tasksFinder.findMany(user_id)
       const viewModel = TaskViewModel.mapCollection(tasks)
 
       return ok(viewModel)

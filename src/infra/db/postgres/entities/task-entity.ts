@@ -5,23 +5,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import UserEntity from './user'
+import UserEntity from './user-entity'
 
 @Entity({ name: 'tasks' })
 class TaskEntity {
-  constructor(taskParams: TaskEntity) {
-    this.id = taskParams.id
-    this.description = taskParams.description
-    this.itIsDone = taskParams.itIsDone
-    this.createdAt = taskParams.createdAt
-    this.updatedAt = taskParams.updatedAt
-    this.user = taskParams.user
-  }
-
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -40,7 +32,11 @@ class TaskEntity {
   updatedAt: Date
 
   @ManyToOne(() => UserEntity, (user) => user.tasks)
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   user: UserEntity
+
+  @Column({ name: 'user_id', type: 'uuid' })
+  userId: string
 
   @BeforeInsert()
   @BeforeUpdate()

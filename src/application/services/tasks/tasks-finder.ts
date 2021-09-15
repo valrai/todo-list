@@ -1,6 +1,6 @@
 import { TasksFinder } from '@domain/usecases/tasks'
-import { Task } from '@src/domain/models'
-import { TasksFinderRepository } from '@src/application/contracts/tasks'
+import { Task } from '@domain/models'
+import { TasksFinderRepository } from '@application/contracts/tasks'
 
 export default class TasksFinderService implements TasksFinder {
   constructor(private readonly tasksFinderRepository: TasksFinderRepository) {}
